@@ -1,0 +1,17 @@
+<div class="container">
+
+    <form [formGroup]="universiteForm" (ngSubmit)="addUniversity()">
+        <div class="form-group">
+            <label for="formGroupExampleInput">Nom</label>
+            <input formControlName="nomUniv" type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+            <span *ngIf="" class="text-danger">nom is required</span>
+          </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Adresse</label>
+            <input formControlName="adresse" type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+        </div>
+       
+        <button type="submit" class="btn btn-primary mt-2" >add university</button>
+    </form>
+
+</div>

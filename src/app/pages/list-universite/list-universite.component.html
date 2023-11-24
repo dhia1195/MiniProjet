@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row my-4">
+    <div class="col-auto ml-auto">
+      <div class="container">
+        <div class="row">
+          <b class="col-auto my-auto"> Ajouter universite </b>
+          <div class="col-auto">
+            <button
+            routerLink="/addUniversite"
+            class="btn btn-success rounded-circle ml-2 d-flex align-items-center justify-content-center"
+            style="width: 50px; height: 50px">
+            <i class="fa fa-plus text-white"></i>
+          </button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">nom</th>
+        <th scope="col">adresse</th>
+        <th scope="col">actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let uni of universities">
+        <td>{{ uni.idUniv }}</td>
+        <td>{{ uni.nomUniv }}</td>
+        <td>{{ uni.adresse }}</td>
+        <td>
+          <button (click)="deleteUniversite(uni)" class="btn btn-danger">
+            Delete
+          </button>
+
+          <button
+            routerLink="/updateUniversite/{{ uni.idUniv }}"
+            class="btn btn-info"
+          >
+            Update
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,25 @@
+/* styles.css (ou votre fichier de styles) */
+
+.etudiants-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Ajoutez d'autres styles selon vos besoins */
+  
