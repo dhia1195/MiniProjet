@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
 import { UniversiteService } from '../../services/universite.service';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute,Router } from "@angular/router";
+
 @Component({
   selector: "app-update-universite",
   templateUrl: "./update-universite.component.html",
@@ -11,6 +12,7 @@ export class UpdateUniversiteComponent {
   constructor(
     private universityService: UniversiteService,
     private fb: FormBuilder,
+    private router:Router,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -40,6 +42,8 @@ export class UpdateUniversiteComponent {
       this.universityService
         .updateUniversity(this.universiteForm.value)
         .subscribe((data) => {
+          this.router.navigate(["/listUniversite"])
+
           console.log(data);
         });
     }
