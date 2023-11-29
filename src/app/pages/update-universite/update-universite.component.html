@@ -3,14 +3,23 @@
         <div class="form-group">
             <label for="formGroupExampleInput">Nom</label>
             <input formControlName="nomUniv" type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-            <span *ngIf="" class="text-danger">nom is required</span>
-          </div>
+            <div *ngIf="universiteForm.get('nomUniv').invalid && (universiteForm.get('nomUniv').touched || universiteForm.get('nomUniv').dirty)" class="text-danger">
+                <div *ngIf="universiteForm.get('nomUniv').errors['required']">Le nom est requis.</div>
+            </div>
+        </div>
         <div class="form-group">
             <label for="formGroupExampleInput">Adresse</label>
             <input formControlName="adresse" type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+            <div *ngIf="universiteForm.get('adresse').invalid && (universiteForm.get('adresse').touched || universiteForm.get('adresse').dirty)" class="text-danger">
+                <div *ngIf="universiteForm.get('adresse').errors['required']">L'adresse est requise.</div>
+            </div>
         </div>
        
-        <button type="submit" class="btn btn-primary mt-2" >modifier university</button>
-    </form>
+        <button type="submit" class="btn btn-primary mt-2">Modifier l'université</button>
 
+        <!-- Afficher le message de succès -->
+        <div *ngIf="modifierAvecSucces" class="alert alert-success mt-2">
+            Université modifiée avec succès !
+        </div>
+    </form>
 </div>

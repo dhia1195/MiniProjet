@@ -12,6 +12,7 @@ export class AddUniversiteComponent {
   constructor(private universityService:UniversiteService,private fb:FormBuilder){}
   
   universiteForm:FormGroup;
+  ajoutAvecSucces: boolean = false;
 
   ngOnInit(): void {
     this.universiteForm=this.fb.group({
@@ -27,6 +28,8 @@ export class AddUniversiteComponent {
     if(this.universiteForm.valid){
       this.universityService.addUniversity(this.universiteForm.value).subscribe((data) => {
         console.log(data);
+        this.ajoutAvecSucces = true;
+        this.universiteForm.reset();
       });
     }
 
