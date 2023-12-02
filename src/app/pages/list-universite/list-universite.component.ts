@@ -3,7 +3,7 @@ import { UniversiteService } from '../../services/universite.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { LogService } from '../../services/log.service';
-
+import { PdfService } from '../../services/pdf.service';
 @Component({
   selector: 'app-list-universite',
   templateUrl: './list-universite.component.html',
@@ -16,7 +16,6 @@ export class ListUniversiteComponent {
   searchTerm: string = '';
   logs: string[] = [];
   logsVisibles: boolean = false;
-
   get filteredUniversities() {
     return this.universities.filter(uni => {
       const searchData = `${uni.idUniv} ${uni.nomUniv} ${uni.adresse}`.toLowerCase();
@@ -27,7 +26,8 @@ export class ListUniversiteComponent {
   constructor(
     private universiteService: UniversiteService,
     private router: Router,
-    private logService: LogService
+    private logService: LogService,
+    private pdfService: PdfService
   ) {}
 
   ngOnInit(): void {
@@ -63,13 +63,23 @@ hideLog(index: number): void {
       });
     }
 }
-
-
 afficherLogs() {
     // Récupérer les logs du service de journalisation
     this.logs = this.logService.getLogs();
     // Afficher la section des logs
     this.logsVisibles = true;
 }
+generatePDF() {
+  this.pdfService.generatePDF().subscribe(
+    (pdfBlob: Blob) => {
+      const pdfUrl = URL.createObjectURL(pdfBlob);
+      window.open(pdfUrl, '_blank');
+    },
+    error => {
+      console.error('Erreur lors de la génération du PDF', error);
+    }
+  );
+}
+
 
 }

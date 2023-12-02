@@ -9,18 +9,9 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'etudiant',
+    redirectTo: '',
     pathMatch: 'full',
-  }, {
-    path: '',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('src/app/layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
-      }
-    ]
-  }, {
+  },  {
     path: '',
     component: AuthLayoutComponent,
     children: [
@@ -30,6 +21,17 @@ const routes: Routes =[
       }
     ]
   }, 
+  {
+    path: '',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('src/app/layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
+      }
+    ]
+  },
+
   {
     path: 'etudiant',
     loadChildren: () =>
