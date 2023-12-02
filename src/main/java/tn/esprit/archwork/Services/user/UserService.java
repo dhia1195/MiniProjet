@@ -1,16 +1,14 @@
 package tn.esprit.archwork.Services.user;
 
-
+import tn.esprit.archwork.Respositories.UserInfoRepository;
+import tn.esprit.archwork.Respositories.EtudiantRepo;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import tn.esprit.archwork.Services.user.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import tn.esprit.archwork.Respositories.EtudiantRepo;
-import tn.esprit.archwork.Respositories.UserInfoRepository;
 import tn.esprit.archwork.entities.Admin;
 import tn.esprit.archwork.entities.Etudiant;
 import tn.esprit.archwork.entities.User;
@@ -49,12 +47,13 @@ public class UserService implements UserDetailsService {
         user.setPassword(data.get("password"));
         user.setRole(data.get("role"));
         Etudiant etudiant = new Etudiant();
-        //etudiant.setUser(user);
+        etudiant.setUser(user);
         //etudiant.setCin(Long.parseLong(data.get("cin")));
         etudiant.setNomEt(data.get("nomEt"));
         etudiant.setPrenomEt(data.get("prenomEt"));
+        etudiant.setEcole(data.get("ecole"));
         etudiant.setCin(Long.parseLong(data.get("cin")));
-        //etudiant.setDateNaissance(LocalDate.parse(data.get("dateNaissance")));
+        etudiant.setDateNaissance(LocalDate.parse(data.get("dateNaissance")));
         user.setPassword(encoder.encode(user.getPassword()));
         userRepository.save(user);
         etudiantRepository.save(etudiant);

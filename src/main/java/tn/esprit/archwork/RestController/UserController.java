@@ -27,7 +27,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @Slf4j
 public class UserController {
 
@@ -57,7 +57,7 @@ public class UserController {
         String email = payloadJson.getString("email");
         Etudiant etudiant = etudiantService.getEtudiantByEmail(email);
 
-        return ResponseEntity.ok().body(etudiant != null && etudiant.getUser().getRole().equals("ROLE_USER"));
+        return ResponseEntity.ok().body(etudiant != null && etudiant.getUser().getRole().equals("ROLE_ETUDIANT"));
     }
 
     @PostMapping("/addEtudiant")

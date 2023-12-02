@@ -40,18 +40,6 @@ import tn.esprit.archwork.filter.JwtAuthFilter;
         @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
             return http.csrf().disable()
-                    /*
-                      .authorizeHttpRequests()
-                      .requestMatchers("/auth/welcome", "/auth/addNewUser", "/auth/generateToken").permitAll()
-                      .and()
-                      .authorizeHttpRequests().requestMatchers("/auth/user/**").authenticated()
-                      .and()
-                      .authorizeHttpRequests().requestMatchers("/auth/admin/**").authenticated()
-                      .and()
-                      .sessionManagement()
-                      .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                      .and()
-                      */
                     .authenticationProvider(authenticationProvider())
                     .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                     .build();
@@ -77,7 +65,7 @@ import tn.esprit.archwork.filter.JwtAuthFilter;
         public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
             return config.getAuthenticationManager();
         }
-        @Bean
+ /*       @Bean
         public CorsFilter corsFilter() {
             UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
             CorsConfiguration config = new CorsConfiguration();
@@ -91,7 +79,7 @@ import tn.esprit.archwork.filter.JwtAuthFilter;
 
             return new CorsFilter(source);
         }
-
+*/
 
 
 

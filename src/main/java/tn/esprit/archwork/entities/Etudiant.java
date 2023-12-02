@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -23,7 +24,7 @@ public class Etudiant {
     long cin;
     String ecole;
     @Temporal(TemporalType.DATE)
-    Date dateNaissance;
+    LocalDate dateNaissance;
     @ManyToMany
     Set<Reservation> reservations;
 
