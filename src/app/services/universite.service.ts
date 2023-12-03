@@ -18,7 +18,6 @@ export class UniversiteService {
     return this._http.get(`${this.url}/retrieveUniversityById/${id}`); 
   }
 
-
   public addUniversity(universite:any){
     return this._http.post(this.url+"/ajouteruniversite",universite);
   }
