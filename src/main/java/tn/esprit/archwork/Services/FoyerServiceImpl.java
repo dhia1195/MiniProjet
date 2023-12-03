@@ -12,6 +12,7 @@ import tn.esprit.archwork.entities.Universite;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 @Service
 @AllArgsConstructor
 public class FoyerServiceImpl implements IFoyerService {
@@ -20,7 +21,8 @@ public class FoyerServiceImpl implements IFoyerService {
 
 
     private UniversiteRepo universiteRepo;
-    FoyerRepo foyerRepo ;
+    FoyerRepo foyerRepo;
+
     @Override
     public List<Foyer> retrieveAllFoyers() {
         return foyerRepo.findAll();
@@ -65,6 +67,11 @@ public class FoyerServiceImpl implements IFoyerService {
         }
 
         return null; // Universite not found
+    }
+
+    @Override
+    public List<Foyer> findFoyersByUniversiteIsNull() {
+        return foyerRepo.findFoyersByUniversiteIsNull();
     }
 
 

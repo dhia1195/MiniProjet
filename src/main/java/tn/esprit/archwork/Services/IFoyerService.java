@@ -17,6 +17,7 @@ public interface IFoyerService {
     void removeFoyer (long idFoyer);
     public Foyer ajouterFoyerEtAffecterAUniversite (Foyer foyer, long idUniversite) ;
 
+    List<Foyer> findFoyersByUniversiteIsNull();
 
 
 

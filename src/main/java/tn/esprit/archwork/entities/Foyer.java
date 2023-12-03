@@ -1,5 +1,6 @@
 package tn.esprit.archwork.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class Foyer {
     // private List<Bloc> blocs;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "foyer")
     Set<Bloc> blocs;
+    @JsonIgnore
     @OneToOne(mappedBy = "foyer")
     Universite universite;
 
