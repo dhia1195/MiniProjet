@@ -1,0 +1,30 @@
+<!-- foyer-statistics.component.html -->
+<div>
+    <h2>Statistiques des Foyers</h2>
+    <!-- Ajoutez cet élément SVG pour le graphique -->
+<svg width="400" height="300">
+    <!-- Axe des X -->
+    <line x1="50" y1="250" x2="350" y2="250" style="stroke:black;stroke-width:2" />
+    <!-- Axe des Y -->
+    <line x1="50" y1="250" x2="50" y2="50" style="stroke:black;stroke-width:2" />
+  
+    <!-- Barres du graphique -->
+    <rect *ngFor="let foyer of foyers; let i = index"
+          [attr.x]="50 + i * 50" [attr.y]="250 - foyer.capacite"
+          width="40" [attr.height]="foyer.capacite"
+          style="fill: steelblue; stroke: black; stroke-width: 1;">
+    </rect>
+  
+    <!-- Étiquettes sur l'axe des X -->
+    <text *ngFor="let foyer of foyers; let i = index"
+          [attr.x]="50 + i * 50 + 20" [attr.y]="270"
+          text-anchor="middle" alignment-baseline="middle">
+      {{ foyer.nomFoyer }}
+    </text>
+  
+    <!-- Étiquettes sur l'axe des Y -->
+    <text x="30" y="50" text-anchor="end" alignment-baseline="middle">Capacité</text>
+    <text x="30" y="250" text-anchor="end" alignment-baseline="middle">0</text>
+  </svg>
+  </div>
+  

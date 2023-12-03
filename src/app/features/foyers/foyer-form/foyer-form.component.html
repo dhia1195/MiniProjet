@@ -1,0 +1,66 @@
+
+
+
+
+<!-- Sidenav -->
+<app-sidebar></app-sidebar>
+<div class="main-content">
+  <!-- Top navbar -->
+  <app-navbar></app-navbar>
+  <!-- Pages -->
+  <!-- Foyer.component.html -->
+<main>
+  <div class="position-relative">
+    <!-- shape Hero -->
+    <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8 text-center text-white">
+      <div class="container-fluid">
+        <div class="header-body">
+          <!-- Card stats -->
+          <h1 class="display-3  text-white">Ajouter Foyer</h1>
+        </div>
+      </div>
+    </div>
+
+  
+    <!-- shape Hero -->
+   
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <h1 class="text-white">Ajouter un foyer</h1>
+
+      <div class="card shadow-lg p-4">
+      <form #foyerForm="ngForm" (ngSubmit)="addFoyer(foyerForm)">
+        <div class="mb-3">
+          <label for="nomFoyer" class="form-label">Nom du Foyer</label>
+          <input type="text" class="form-control" name="nomFoyer" [(ngModel)]="foyer.nomFoyer" required minlength="3">
+          <div class="alert alert-danger" *ngIf="foyerForm.controls['nomFoyer'].invalid && (foyerForm.controls['nomFoyer'].touched || foyerForm.controls['nomFoyer'].dirty)">
+            <div *ngIf="foyerForm.controls['nomFoyer'].errors?.required">Nom is required!</div>
+            <div *ngIf="foyerForm.controls['nomFoyer'].errors?.minlength">Nom must be at least 3 characters!</div>
+          </div>
+        </div>
+  
+  
+        <div class="mb-3">
+          <label for="capacite" class="form-label">Capacité du Foyer</label>
+          <input type="number" class="form-control" name="capacite" [(ngModel)]="foyer.capacite" required>
+          <div class="alert alert-danger" *ngIf="foyerForm.controls['capacite'].invalid && (foyerForm.controls['capacite'].touched || foyerForm.controls['capacite'].dirty)">
+            <div *ngIf="foyerForm.controls['capacite'].errors?.required">capacite is required!</div>
+          </div>
+        </div>
+  
+       
+  
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary" [value]="id !== undefined ? 'Update' : 'Add'"[disabled]="foyerForm.invalid">Add Foyer</button>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+  <router-outlet></router-outlet>
+
+</div>
