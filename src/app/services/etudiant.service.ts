@@ -35,5 +35,7 @@ export class EtudiantService {
   removeEtudiant(idEtudiant: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/removeetudiant/${idEtudiant}`);
   }
-  
+  getEtudiantsWithReservations(): Observable<Etudiant[]> {
+    return this.http.get<Etudiant[]>(`${this.apiUrl}/with-reservations`);
+}
 }

@@ -11,14 +11,13 @@
         </button>
       </div>
     </div>
-
     <div class="col-auto mx-auto"> <!-- Utilisation de 'mx-auto' pour centrer horizontalement -->
       <button (click)="afficherLogs()" class="btn btn-secondary">
         Afficher les logs
       </button>
     </div>
-    <div *ngIf="filteredUniversities.length > 0">
-      <button (click)="generatePDF()" class="btn btn-dhia">Générer PDF</button>
+    <div class="col-auto">
+      <button *ngIf="filteredUniversities.length > 0" (click)="generatePDF()" class="btn btn-dhia">Générer PDF</button>
     </div>
     <div class="col-auto">
       <div class="container">
@@ -41,8 +40,6 @@
       </li>
     </ul>
   </div>
-
-  
   <table class="table table-striped">
     <thead>
       <tr>
@@ -57,13 +54,23 @@
         <td>{{ uni.idUniv }}</td>
         <td>{{ uni.nomUniv }}</td>
         <td>{{ uni.adresse }}</td>
-        <td>
+        <td class="row">
+
           <button (click)="deleteUniversite(uni)" class="btn btn-danger">
             Delete
           </button>
           <button [routerLink]="'/updateUniversite/' + uni.idUniv" class="btn btn-info">
             Update
           </button>
+
+        
+          <div class="col-auto" class="form-group">
+            <label for="option">Sélectionnez une option :</label>
+            <select class="form-control" id="option" (change)="onOptionSelectionChange($event,uni)">
+              <option *ngFor="let foyer of foyerList" [value]="foyer.idFoyer">{{ foyer.nomFoyer }}</option>
+              <option>select foyer</option>
+            </select>
+          </div>
         </td>
       </tr>
     </tbody>
@@ -76,8 +83,6 @@
   <!-- ... Votre contenu existant ... -->
   <script>
  </script>
- 
-
 <style>
   .btn-search {
     width: 30px;
@@ -96,5 +101,3 @@ ul.logs-list li {
   color: darkred;
 }
 </style>
-
-
