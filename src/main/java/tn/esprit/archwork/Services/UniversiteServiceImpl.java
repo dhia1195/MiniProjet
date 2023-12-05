@@ -94,6 +94,6 @@ public class UniversiteServiceImpl implements IUniversiteService{
             }
         }
 
-        return null; // Handle cases where the foyer or universite is not found
+        return null;
     }
 }
