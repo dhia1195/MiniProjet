@@ -1,0 +1,25 @@
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-auto" *ngFor="let university of universities">
+      <div class="card" style="width: 18rem">
+        <img class="card-img-top" src="/assets/img/icons/univer.png" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ university.nomUniv }}</h5>
+          <p class="card-text">Adresse: {{ university.adresse }}</p>
+          
+          <ng-container *ngIf="university.foyer; else elseBloc">
+            <h6 class="card-title">nom foyer: {{ university.foyer.nomFoyer }}</h6>
+          </ng-container>
+          
+          <ng-template #elseBloc>
+            <h6 class="card-title">foyer non affecter</h6>
+          </ng-template>
+          
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
