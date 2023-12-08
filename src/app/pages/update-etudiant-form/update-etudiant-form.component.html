@@ -1,0 +1,96 @@
+
+
+
+  
+<!-- etudiant.component.html -->
+<main>
+  <div class="position-relative">
+    <!-- shape Hero -->
+    <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8 text-center text-white">
+      <div class="container-fluid">
+        <div class="header-body">
+          <!-- Card stats -->
+          <h1 class="display-3  text-white">Ajouter Étudiant</h1>
+        </div>
+      </div>
+    </div>
+  <div class="position-relative">
+    <!-- shape Hero -->
+    <section class="section section-lg section-shaped pb-250">
+      <div class="shape shape-style-1 shape-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="text-white">Modifier un étudiant</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- etudiant-update-form.component.html -->
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form #etudiantUpdateForm="ngForm" (ngSubmit)="updateEtudiant(etudiantUpdateForm)" class="card p-4">
+        <div class="mb-3">
+          <label for="nomEt" class="form-label">Nom</label>
+          <input type="text" class="form-control" name="nomEt" [(ngModel)]="etudiant.nomEt" required minlength="3">
+          <div class="alert alert-danger" *ngIf="etudiantUpdateForm.controls['nomEt'].invalid && (etudiantUpdateForm.controls['nomEt'].touched || etudiantUpdateForm.controls['nomEt'].dirty)">
+            <div *ngIf="etudiantUpdateForm.controls['nomEt'].errors?.required">Nom is required!</div>
+            <div *ngIf="etudiantUpdateForm.controls['nomEt'].errors?.minlength">Nom must be at least 3 characters!</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="prenomEt" class="form-label">Prénom</label>
+          <input type="text" class="form-control" name="prenomEt" [(ngModel)]="etudiant.prenomEt" required minlength="3">
+          <div class="alert alert-danger" *ngIf="etudiantUpdateForm.controls['prenomEt'].invalid && (etudiantUpdateForm.controls['prenomEt'].touched || etudiantUpdateForm.controls['prenomEt'].dirty)">
+            <div *ngIf="etudiantUpdateForm.controls['prenomEt'].errors?.required">Prénom is required!</div>
+            <div *ngIf="etudiantUpdateForm.controls['prenomEt'].errors?.minlength">Prénom must be at least 3 characters!</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="cin" class="form-label">CIN</label>
+          <input type="number" class="form-control" name="cin" [(ngModel)]="etudiant.cin" required>
+          <div class="alert alert-danger" *ngIf="etudiantUpdateForm.controls['cin'].invalid && (etudiantUpdateForm.controls['cin'].touched || etudiantUpdateForm.controls['cin'].dirty)">
+            <div *ngIf="etudiantUpdateForm.controls['cin'].errors?.required">CIN is required!</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="ecole" class="form-label">École</label>
+          <input type="text" class="form-control" name="ecole" [(ngModel)]="etudiant.ecole" required>
+          <div class="alert alert-danger" *ngIf="etudiantUpdateForm.controls['ecole'].invalid && (etudiantUpdateForm.controls['ecole'].touched || etudiantUpdateForm.controls['ecole'].dirty)">
+            <div *ngIf="etudiantUpdateForm.controls['ecole'].errors?.required">École is required!</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="dateNaissance" class="form-label">Date de Naissance</label>
+          <input type="date" class="form-control" name="dateNaissance" [(ngModel)]="etudiant.dateNaissance" required>
+          <div class="alert alert-danger" *ngIf="etudiantUpdateForm.controls['dateNaissance'].invalid && (etudiantUpdateForm.controls['dateNaissance'].touched || etudiantUpdateForm.controls['dateNaissance'].dirty)">
+            <div *ngIf="etudiantUpdateForm.controls['dateNaissance'].errors?.required">Date de Naissance is required!</div>
+          </div>
+        </div>
+  
+        <!-- Add other fields as needed -->
+  
+        <div class="mb-3 text-center">
+          <button type="submit" class="btn btn-primary" [disabled]="etudiantUpdateForm.invalid">Update Etudiant</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+ 

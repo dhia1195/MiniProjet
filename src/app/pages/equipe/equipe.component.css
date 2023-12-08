@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+
+}
+
+.section_Equipe {
+  padding-top: 120px;
+  padding-bottom: 45px;
+  overflow-x: hidden;
+}
+
+.gr {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+}
+
+.wrapper {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 5px auto;
+  align-items: center;
+
+}
+
+
+.profile {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  border-radius: 50%;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  transition: 0.2s;
+  overflow: hidden;
+  margin: 5px;
+}
+
+.pro_img {
+  width: 220px;
+  height: 220px;
+  position: relative;
+
+  border-radius: 50%;
+  transition: 0.5s;
+  transition-delay: 0.1s;
+  z-index: 1;
+}
+
+.dtl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.name {
+  font-family: arial;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 30px;
+  color: #fff;
+}
+
+.bio {
+  font-family: arial;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+
+.profile:hover {
+  border-radius: 17px;
+  height: 380px;
+}
+
+.profile .pro_img {
+  transition: 0.5s;
+}
+
+.profile:hover .dtl {
+  opacity: 1;
+  z-index: 1;
+}
+
+.profile:hover .pro_img {
+  width: 350px;
+  height: 350px;
+  position: relative;
+  border-radius: 0%;
+  transition: 0.5s;
+  transition-delay: 0.1s;
+  z-index: 1;
+}
+
+
+
+.name,
+.bio {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.wrapper .profile {
+  margin-right: 10px;
+}

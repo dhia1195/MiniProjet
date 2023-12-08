@@ -1,0 +1,50 @@
+
+<main>
+  <div class="position-relative">
+    <!-- shape Hero -->
+    <div class="header bg-gradient-primary pb-6 pt-3 pt-md-6 text-center text-white">
+      <div class="container-fluid">
+        <div class="header-body">
+          <!-- Card stats -->
+          <h1 class="display-3  text-white">Modifier le bloc </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center mt-4">
+    <div class="col-7 shadow-lg p-5 mb-6 mt-4 bg-body rounded">
+  <!-- bloc-form.component.html -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+  
+        <form #ubloc="ngForm" (ngSubmit)="updateBloc(ubloc)">
+          <div class="mb-3">
+            <label for="nomBloc" class="form-label">Nom du bloc</label>
+            <input type="text" class="form-control" name="nomBloc" [(ngModel)]="bloc.nomBloc" required>
+            <div class="alert alert-danger" *ngIf="ubloc.controls['nomBloc'].invalid && (ubloc.controls['nomBloc'].touched || ubloc.controls['nomBloc'].dirty)">
+              <div *ngIf="ubloc.controls['nomBloc'].errors?.required">Nom est obligatoire !</div>
+            </div>
+           
+          </div>
+    
+          <div class="mb-3">
+            <label for="capaciteBloc" class="form-label">Capacité du bloc</label>
+            <input type="number" class="form-control" name="capaciteBloc" [(ngModel)]="bloc.capaciteBloc" required >
+            <div class="alert alert-danger" *ngIf="ubloc.controls['capaciteBloc'].invalid && (ubloc.controls['capaciteBloc'].touched || ubloc.controls['capaciteBloc'].dirty)">
+              <div *ngIf="ubloc.controls['capaciteBloc'].errors?.required">Capacité est obligatoire !</div>
+            </div>
+          </div>
+    
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary"  [disabled]="ubloc.invalid"> Modifier bloc</button>
+  
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</main> 
+

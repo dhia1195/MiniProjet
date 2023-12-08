@@ -1,0 +1,83 @@
+
+<main>
+  <div class="position-relative">
+    <!-- shape Hero -->
+    <div class="header bg-gradient-primary pb-6 pt-3 pt-md-6 text-center text-white">
+      <div class="container-fluid">
+        <div class="header-body">
+          <!-- Card stats -->
+          <h1 class="display-3  text-white">Liste des Blocs</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Filter Section -->
+<div class="d-flex justify-content-between mx-3 ">
+  <div class="col-9 shadow-lg p-3 mb-5 mt-3 bg-body rounded ">
+    <div class="d-flex align-items-center">
+        <div class="d-flex me-3 mx-3" role="search">
+            <input type="text" class="form-control ms-2  " placeholder="Cherchez un bloc" [(ngModel)]="searchTerm" (input)="searchBlocs(searchTerm)">
+            <i class="bi bi-search mt-2 mx-3"></i>
+        </div>
+        <div class="d-flex mr-5">
+          <button (click)="navigateToBlocForm()" class="btn btn-primary ms-0  " ><i class="bi bi-plus py-0 pt-0 px-0"></i> Ajouter</button> 
+        </div>
+        <div class="col-auto">
+          <button (click)="generatePDF()" class="btn btn-primary">Générer PDF</button>
+        </div>
+    </div>
+    
+      
+        
+  <div class="container-fluid col-lg-12 ">
+    <div class="row">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Capacité du bloc</th>
+              <th scope="col">Nom du bloc</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bloc of b">
+             
+              <td>{{ bloc.capaciteBloc }}</td>
+              <td>{{ bloc.nomBloc }}</td>
+              
+              <td >
+                <select class="form-control" id="option" (change)="onOptionSelectionChange($event,bloc)">
+                  <option *ngFor="let foyer of foyerList" [value]="foyer.idFoyer">{{ foyer.nomFoyer }}</option>
+                  <option>select foyer</option>
+                </select>
+                <button (click)="deleteBloc(bloc.idBloc)" class="btn btn-danger ">Supprimer</button>
+                <button (click)="navigateToUpdateForm(bloc.idBloc)" class="btn btn-primary ">Modifier</button>
+                <button (click)="open(bloc)"  class="btn btn-primary "><i class="bi bi-eye"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+</div>
+<div class="mx-3 mt-3 col-lg-4" [hidden]="show">
+  <div  class="p-0 mb-0 card ">
+    <div  class="card position-relative" style="width: 18rem; max-height: 50rem;">
+      <button (click)="close()" type="button" class="btn-close py-2"></button>
+      <img src="./assets/img/theme/position.png" class="card-img-top img-fluid mt-2" alt="map bloc">
+      <div>
+        <h5 class="mt-4">Nom du bloc :{{bloc.nomBloc}}</h5>
+        <h5>Capacite du bloc : {{bloc.capaciteBloc}}</h5>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+
+
+
