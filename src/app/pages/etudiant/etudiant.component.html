@@ -1,0 +1,91 @@
+<main>
+  <div class="position-relative">
+    <!-- Header -->
+    <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8 text-center text-white">
+      <div class="container-fluid">
+        <div class="header-body">
+          <h1 class="display-3 text-white">Liste des Étudiants</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter and Sort Section -->
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Filter Section -->
+      <div class="col-lg-6 mb-3">
+        <div class="input-group">
+          <label for="filterText" class="form-label sr-only">Recherche avancée :</label>
+          <input type="text" class="form-control" id="filterText" placeholder="Recherche avancée" [(ngModel)]="filterText">
+
+          <!-- Add the Rechercher button -->
+          <button (click)="filterEtudiants()" class="btn btn-primary">Rechercher</button>
+        </div>
+      </div>
+
+
+      <!-- Sort Section -->
+      <div class="col-lg-6 mb-3">
+        <div class="input-group">
+          <label for="sortField" class="form-label sr-only">Champ de tri :</label>
+          <select class="form-select" id="sortField" [(ngModel)]="sortField">
+            <option value="nomEt">Nom</option>
+            <option value="prenomEt">Prénom</option>
+            <option value="ecole">ecole</option>
+          </select>
+          <label for="sortDirection" class="form-label sr-only">Direction de tri :</label>
+          <select class="form-select" id="sortDirection" [(ngModel)]="sortDirection">
+            <option value="asc">Ascendant</option>
+            <option value="desc">Descendant</option>
+          </select>
+          <button (click)="sortEtudiants()" class="btn btn-primary">Trier</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Etudiants List -->
+    <div class="row">
+      <div class="col-lg-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nom d'Étudiant</th>
+              <th scope="col">Prénom d'Étudiant</th>
+              <th scope="col">Date de Naissanse</th>
+              <th scope="col">École d'Étudiant</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let etudiant of e" [class.selected]="etudiant === selected">
+              <td>{{ etudiant.nomEt }}</td>
+              <td>{{ etudiant.prenomEt }}</td>
+              <td>{{ etudiant.dateNaissance}}</td>
+
+              <td>{{ etudiant.ecole }}</td>          
+                  <td>
+                <button (click)="removeEtudiant(etudiant.idEtudiant)" class="btn btn-danger">Supprimer</button>
+                <button (click)="navigateToUpdateForm(etudiant.idEtudiant)" class="btn btn-primary">Modifier</button>
+                
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-lg-12">
+        <button (click)="navigateToEtudiantForm()" class="btn btn-primary mr-2">Ajouter un étudiant</button>
+        <button (click)="navigateToStatistics()" class="btn btn-success">Statistiques</button>
+        <button (click)="loadEtudiantsWithReservations()" class="btn btn-primary">Afficher les étudiants avec réservation</button>
+        <button (click)="clearFilter()" class="btn btn-secondary">Clear</button>
+        <button (click)="generatePDF()" class="btn btn-success">Générer PDF</button>
+      </div>
+    </div>
+
+   <!-- /* <div *ngIf="ajoutSucces" class="alert alert-success mt-2">
+      Etudiant ajouté avec succès !
+    </div>*/ -->
+  </div>
+</main>

@@ -1,0 +1,27 @@
+<div *ngIf="selectedEtudiant" class="etudiant-details">
+  <h2 class="text-center mb-4">Détails de l'Étudiant</h2>
+
+  <div class="card d-flex align-items-center">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <!-- Display default image if no image is available -->
+        <img
+          src="{{ selectedEtudiant.image || '/assets/img/icons/etudiant.png' }}"
+          alt="Profile Image"
+          class="card-img img-fluid rounded etudiant-image"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Nom:</strong> {{ selectedEtudiant.nomEt }}</li>
+            <li class="list-group-item"><strong>Prénom:</strong> {{ selectedEtudiant.prenomEt }}</li>
+            <li class="list-group-item"><strong>Date de Naissance:</strong> {{ selectedEtudiant.dateNaissance }}</li>
+            <li class="list-group-item"><strong>CIN:</strong> {{ selectedEtudiant.cin }}</li>
+            <li class="list-group-item"><strong>École:</strong> {{ selectedEtudiant.ecole }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
