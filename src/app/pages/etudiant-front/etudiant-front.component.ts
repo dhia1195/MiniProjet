@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./etudiant-front.component.css']
 })
 export class EtudiantFrontComponent {
-  @Output() etudiantSelected: EventEmitter<Etudiant> = new EventEmitter<Etudiant>();
+  @Output() selectedEtudiant: EventEmitter<Etudiant> = new EventEmitter<Etudiant>();
 
   e: Etudiant[] = [];
   newEtudiant: Etudiant = new Etudiant();
@@ -18,7 +18,7 @@ export class EtudiantFrontComponent {
   filterText: string = '';
   sortField: string;
   sortDirection: 'asc' | 'desc' = 'asc';
-selectedEtudiant: any;
+  etudiantSelected: any;
 
   constructor(private etudiantService: EtudiantService, private router: Router) {}
 
@@ -36,9 +36,9 @@ selectedEtudiant: any;
 
  
   showEtudiantDetails(etudiant: Etudiant) {
-        this.selectedEtudiant = etudiant;  
+        this.etudiantSelected = etudiant;  
 
- this.etudiantSelected.emit(etudiant);
+ this.selectedEtudiant.emit(etudiant);
 
     // Navigate to the details route
     this.router.navigate(['/user/details', etudiant.idEtudiant]);
