@@ -1,0 +1,86 @@
+
+  <div class="position-relative">
+    <!-- shape Hero -->
+    <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8 text-center text-white">
+      <div class="container-fluid">
+        <div class="header-body">
+          <!-- Card stats -->
+          <h1 class="display-3  text-white">Liste des Réservations</h1>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+
+      <h1>Les Demandes de Reservations </h1>
+      <!-- Search Section -->
+      <div class="input-group mb-1">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search "
+          [(ngModel)]="searchTerm"
+          (input)="searchFoyers(searchTerm)"
+        />
+        <button (click)="clearSearch()" class="btn btn-primary-dark">Clear</button>
+      </div>
+      
+
+        
+
+
+
+        <div class="col-lg-6 mb-3">
+          <div class="input-group">
+            <label for="sortField" class="form-label sr-only">Champ de tri :</label>
+            <select class="form-select" id="sortField" [(ngModel)]="sortField" (change)="filterByStatus()">
+              <option value="annule">annule </option>
+              <option value="valide">valide </option>
+              <option value="en-cours">en-cours </option>
+            </select>
+            <label for="sortDirection" class="form-label sr-only">Direction de tri :</label>
+
+          </div>
+        </div>
+
+      </div>
+
+      <ul>
+
+        <li *ngFor="let reservation of reservationsList;let i= index" class="booking-card"
+          style="background-image: url(https://i.pinimg.com/originals/3b/2a/53/3b2a530616b695ac42a8dc9111985b40.jpg)">
+          <div class="book-container">
+
+          </div>
+
+          <div class="informations-container">
+           
+            <h2 class="title">chambre numero : {{reservation.chambre.numChambre}}</h2>
+            <p class="sub-title">plus de details</p>
+            <div class="more-information">
+              <div class="info-and-date-container">
+                <button class="btn box info" (click)="showDetails[i]=false">
+                  <img src="/assets/img/reservation/user.png" alt="user image" class="img-fluid" width="50px">
+                  <p class="mt-1">Details Etudiant</p>
+                </button>
+                <button class="btn box date" (click)="showDetails[i]=true">
+                  <img src="/assets/img/reservation/room.jpg" alt="user image" class="img-fluid" width="50px">
+                  <p>Details chambre</p>
+                </button>
+              </div>
+              <div class="container">
+                <div *ngIf="showDetails[i]" class="row">
+                  <app-reservation-chambre-info  [donnes]="reservation.chambre"></app-reservation-chambre-info>
+                </div>
+                <div *ngIf="!showDetails[i]" class="row">
+                  <app-reservation-user-info [donnes]="reservation.etudiant"></app-reservation-user-info>
+                </div>
+              </div>
+              <app-reservation-status [reservation]="reservation" (changeStatusEvent)="changeStatusReservation($event)"></app-reservation-status>
+            </div>
+          </div>
+        </li>
+
+
+      </ul>
+    </div>
+

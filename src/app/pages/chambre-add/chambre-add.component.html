@@ -1,0 +1,38 @@
+<!-- chambre-add.component.html -->
+
+<div class="container p-5">
+    <form [formGroup]="chambreForm" (ngSubmit)="addChambre()">
+        <div class="form-group">
+            <label for="formGroupExampleInput">Numero</label>
+            <input formControlName="numChambre" type="text" class="form-control" id="formGroupExampleInput" placeholder="Exemple de saisie">
+            <div *ngIf="chambreForm.get('numChambre').invalid && (chambreForm.get('numChambre').touched || chambreForm.get('numChambre').dirty)" class="text-danger">
+              <div *ngIf="chambreForm.get('numChambre').errors['required']">Le numéro est requis.</div>
+              <div *ngIf="chambreForm.get('numChambre').errors['pattern']">Le numéro ne doit comporter que des chiffres.</div>
+            </div>
+          </div>
+  
+      <!-- Checkboxes -->
+      <div class="form-group">
+        <div class="group-gap">
+          <h5 class="mb-3">Type</h5>
+          <div class="d-block my-3">
+            <div *ngFor="let type of types" class="custom-control custom-radio">
+              <input [id]="type" type="radio" class="custom-control-input" [value]="type" formControlName="type" required>
+              <label [for]="type" class="custom-control-label">{{ type }}</label>
+            </div>
+            <div class="invalid-feedback" *ngIf="chambreForm.get('type').errors['required']">
+              <p>Please select a type</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <button type="button" class="btn btn-primary mt-2" (click)="addChambre()">Ajouter Chambre</button>
+  
+      <!-- Afficher le message de succès -->
+      <div *ngIf="ajoutAvecSucces" class="alert alert-success mt-2">
+        Chambre ajoutée avec succès !
+      </div>
+    </form>
+  </div>
+  

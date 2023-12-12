@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { EtudiantService } from 'src/app/services/etudiant.service';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
+import { BlocService } from './services/bloc.service';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
     AuthLayoutComponent,
     UserLayoutComponent
   ],
-  providers: [EtudiantService],
+  providers: [EtudiantService,BlocService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

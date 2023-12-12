@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Détails de la chambre</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <h5>Nom de l'étudiant: {{ donnes.nomEt | titlecase }}</h5>
+        <h5>Prénom de l'étudiant: {{ donnes.prenomEt | titlecase }}</h5>
+        <h5>CIN: {{ donnes.cin }}</h5>
+        <h5>École: {{ donnes.ecole | titlecase }}</h5>
+        <h5>Date de naissance: {{ donnes.dateNaissance | date }}</h5>
+    </mat-card-content>
+</mat-card>

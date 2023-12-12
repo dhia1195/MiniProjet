@@ -27,6 +27,9 @@ export class StatistiqueComponent implements OnInit {
       this.updateChart();
     });
   }
+  retournerALaListe(): void {
+    this.router.navigate(['/etudiant']);
+  }
 
   private updateChart() {
     if (this.myChart) {

@@ -11,11 +11,18 @@ export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
     { path: '/etudiant', title: 'etudiant',  icon:'ni-planet text-blue', class: '' },
     { path: '/listUniversite', title: 'unviersite',  icon:'ni-planet text-blue', class: '' },
+    { path: '/bloc', title: 'Bloc',  icon:'ni-pin-3 text-orange', class: '' },
+    { path: '/foyer', title: 'Foyer',  icon:'ni-pin-3 text-orange', class: '' },
+    //{ path: '/reservation', title: 'reservation',  icon:'ni-planet text-blue', class: '' },
+    { path: '/reservations', title: 'reservations',  icon:'ni-planet text-blue', class: '' },
+    { path: '/chambre-list', title: 'Chambre',  icon:'ni-pin-3 text-orange', class: '' },
     { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-orange', class: '' },
     { path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
     { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
     { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },
-    { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' }
+    { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' },
+
+
 ];
 
 @Component({

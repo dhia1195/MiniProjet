@@ -13,6 +13,12 @@ import { LoginComponent } from 'src/app/pages/login/login.component';
 import { RegisterComponent } from 'src/app/pages/register/register.component';
 import { ListUniversiteFComponent } from 'src/app/pages/list-universiteF/list-universiteF.component';
 import { EtudiantDetailsComponent } from 'src/app/pages/etudiant-details/etudiant-details.component';
+import { EquipeComponent } from 'src/app/pages/equipe/equipe.component';
+import { BlocFrontComponent } from 'src/app/pages/bloc-front/bloc-front.component';
+import { BlocDetailsComponent } from 'src/app/pages/bloc-details/bloc-details.component';
+import { FoyerFrontComponent } from 'src/app/pages/foyer-front/foyer-front.component';
+import { ReservationComponent } from 'src/app/pages/reservation/reservation.component';
+import { ReservationFormComponent } from 'src/app/pages/reservation-form/reservation-form.component';
 
 export const UserLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -31,7 +37,14 @@ export const UserLayoutRoutes: Routes = [
     
     { path: 'university',      component: ListUniversiteFComponent },
 
-    { path: 'details/:id',      component: EtudiantDetailsComponent }
+    { path: 'details/:id',      component: EtudiantDetailsComponent },
 
+    { path: 'equipe',         component: EquipeComponent},
+    { path: 'blocf',         component: BlocFrontComponent},
+    { path: 'detailsb/:id',         component: BlocDetailsComponent},
+
+    { path: 'foyerf',         component: FoyerFrontComponent},
+   // { path: 'reservation',      component: ReservationComponent },
+    { path: 'reservation',      component: ReservationFormComponent }
 
 ];

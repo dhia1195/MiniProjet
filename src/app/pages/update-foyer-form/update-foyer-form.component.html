@@ -1,0 +1,57 @@
+
+
+<div class="main-content">
+ 
+ 
+  <div class="position-relative">
+ 
+    <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8 text-center text-white">
+      <div class="container-fluid">
+        <div class="header-body">
+          <h1 class="display-3 text-white">Modifier un foyer</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg p-4">
+          <form #foyerUpdateForm="ngForm" (ngSubmit)="updateFoyer(foyerUpdateForm)">
+            <div class="mb-3">
+              
+              <label for="nomFoyer" class="form-label">Nom du Foyer</label>
+              <input type="text" class="form-control" name="nomFoyer" [(ngModel)]="foyer.nomFoyer" required minlength="3">
+              <div class="invalid-feedback" *ngIf="foyerUpdateForm.controls['nomFoyer'].invalid && (foyerUpdateForm.controls['nomFoyer'].touched || foyerUpdateForm.controls['nomFoyer'].dirty)">
+                <div *ngIf="foyerUpdateForm.controls['nomFoyer'].errors?.required">Le nom est requis!</div>
+                <div *ngIf="foyerUpdateForm.controls['nomFoyer'].errors?.minlength">Le nom doit comporter au moins 3 caractères!</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="capacite" class="form-label">Capacité</label>
+              <input type="number" class="form-control" name="capacite" [(ngModel)]="foyer.capacite" required>
+              <div class="invalid-feedback" *ngIf="foyerUpdateForm.controls['capacite'].invalid && (foyerUpdateForm.controls['capacite'].touched || foyerUpdateForm.controls['capacite'].dirty)">
+                <div *ngIf="foyerUpdateForm.controls['capacite'].errors?.required">La capacité est requise!</div>
+              </div>
+            </div>
+
+
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary" [disabled]="foyerUpdateForm.invalid">Mettre à jour le Foyer</button>
+              <button routerLink="/foyer" class="btn btn-primary">Retour</button>
+            </div>
+
+            <div *ngIf="successMessage" class="alert alert-success">
+              {{ successMessage }}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div> 
+
+   

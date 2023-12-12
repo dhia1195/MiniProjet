@@ -1,0 +1,90 @@
+<div class="container-fluid  p-5 ">
+  <div class="row my-4">
+    <div class="col-auto">
+      <div class="input-group">
+        <div class="form-outline">
+          <input type="search" [(ngModel)]="searchTerm" class="form-control" />
+          <label class="form-label" for="form1">Search</label>
+        </div>
+        <button type="button" class="btn btn-primary btn-search" data-mdb-ripple-init>
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-auto mx-auto"> <!-- Utilisation de 'mx-auto' pour centrer horizontalement -->
+      
+    </div>
+    <div class="col-auto">
+      
+    </div>
+    <div class="col-auto">
+      <div class="container">
+        <div class="row">
+          <b class="col-auto my-auto">Ajouter Chambre</b>
+          <div class="col-auto">
+            <button routerLink="/chambre-add" class="btn btn-success rounded-circle ml-2 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px">
+              <i class="fa fa-plus text-white"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">numero</th>
+          <th scope="col">type</th>
+          <th scope="col">actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ch of filteredChambres">
+          <td>{{ ch.idChambre}}</td>
+          <td>{{ ch.numChambre }}</td>
+          <td>{{ ch.type }}</td>
+          <td>
+            <button (click)="deletechambre(ch)" class="btn btn-danger">
+              Delete
+            </button>
+  
+            <button
+              routerLink="../chambre-update/{{ch.idChambre}}"
+              class="btn btn-info"
+            >
+              Update
+          </button>
+            <div class="col-auto" class="form-group">
+              <label for="option">Sélectionnez une option :</label>
+              <select class="form-control" id="option" (change)="onOptionSelectionChange($event,ch)">
+                <option *ngFor="let bloc of blocList" [value]="bloc.idBloc">{{ bloc.nomBloc }}</option>
+                <option>select bloc</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <style>
+  .btn-search {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+  }
+  .btn-dhia {
+  color: red;
+}
+  .btn-secondary {
+  margin-top: 15px; /* Ajustez selon votre mise en page */
+}
+ul.logs-list li {
+  color: darkred;
+}
+</style>
+  
