@@ -1,0 +1,51 @@
+
+<main>
+  <div class="position-relative">
+    <!-- shape Hero -->
+    <div class="header bg-gradient-primary pb-6 pt-3 pt-md-6 text-center text-white">
+      <div class="container-fluid">
+        <div class="header-body">
+          <!-- Card stats -->
+          <h1 class="display-3  text-white">Ajouter un bloc</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center mt-4">
+    <div class="col-7 shadow-lg p-5 mb-6 mt-4 bg-body rounded">
+  <!-- bloc-form.component.html -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+  
+        <form #bloc="ngForm" (ngSubmit)="ajouterbloc(bloc)">
+          <div class="mb-3">
+            <label for="nomBloc" class="form-label">Nom du bloc</label>
+            <input type="text" class="form-control " name="nomBloc" [(ngModel)]="bloc.nomBloc" required pattern="[a-zA-Z' ']*">
+            <div class="alert alert-danger" *ngIf="bloc.controls['nomBloc'].invalid && (bloc.controls['nomBloc'].touched || bloc.controls['nomBloc'].dirty)">
+              <div *ngIf="bloc.controls['nomBloc'].errors?.required">Nom est obligatoire !</div>
+              <div *ngIf="bloc.controls['nomBloc'].errors?.pattern">Nom ne doit contenir que des lettres </div>
+            </div>
+           
+          </div>
+    
+          <div class="mb-3">
+            <label for="capaciteBloc" class="form-label">Capacité du bloc</label>
+            <input type="number" class="form-control" name="capaciteBloc" [(ngModel)]="bloc.capaciteBloc" required min="100" >
+            <div class="alert alert-danger" *ngIf="bloc.controls['capaciteBloc'].invalid && (bloc.controls['capaciteBloc'].touched || bloc.controls['capaciteBloc'].dirty)">
+              <div *ngIf="bloc.controls['capaciteBloc'].errors?.required">Ce champ est obligatoire !</div>
+              <div *ngIf="bloc.controls['capaciteBloc'].errors?.min">Capacité contient au minimum 3 chiffres.</div>
+            </div>
+          </div>
+    
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary" [value]="idBloc !== undefined ? 'Modifier' : 'Ajouter'"[disabled]="bloc.invalid"> Ajouter bloc</button>
+            <button type="reset" class="btn btn-primary" (click)="retournerALaListe()" > Retour</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+  

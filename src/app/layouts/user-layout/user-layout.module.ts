@@ -16,6 +16,9 @@ import { ListUniversiteFComponent } from "src/app/pages/list-universiteF/list-un
 
 import { EtudiantFrontComponent } from 'src/app/pages/etudiant-front/etudiant-front.component';
 import { EtudiantDetailsComponent } from 'src/app/pages/etudiant-details/etudiant-details.component';
+import { EquipeComponent } from 'src/app/pages/equipe/equipe.component';
+import { BlocFrontComponent } from 'src/app/pages/bloc-front/bloc-front.component';
+import { BlocDetailsComponent } from 'src/app/pages/bloc-details/bloc-details.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -32,6 +35,9 @@ import { EtudiantDetailsComponent } from 'src/app/pages/etudiant-details/etudian
 
 EtudiantFrontComponent,
 EtudiantDetailsComponent,
+EquipeComponent,
+BlocFrontComponent,
+BlocDetailsComponent
 
  ]
 })

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { Foyer } from '../models/foyer';
 
 @Injectable({
   providedIn: 'root'
@@ -30,29 +31,39 @@ export class FoyerService {
   }
 
   addFoyer(foyer: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/foyers`, foyer);
+    return this.http.post(`${this.apiUrl}/foyer/foyers`, foyer);
   }
 
   getAllFoyers(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/afficherfoyers`);
+    return this.http.get<any[]>(`${this.apiUrl}/foyer/afficherfoyers`);
   }
 
   addfoyer(foyer: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/ajouterfoyer`, foyer);
+    return this.http.post<any>(`${this.apiUrl}/foyer/ajouterfoyer`, foyer);
   }
 
   updatefoyer(foyer: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/modifierfoyer`, foyer);
+    return this.http.put<any>(`${this.apiUrl}/foyer/modifierfoyer`, foyer);
   }
 
   getfoyerById(idfoyer: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/afficherfoyer/${idfoyer}`);
+    return this.http.get<any>(`${this.apiUrl}/foyer/afficherfoyer/${idfoyer}`);
   }
 
   removefoyer(idfoyer: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/removefoyer/${idfoyer}`);
+    return this.http.delete<void>(`${this.apiUrl}/foyer/removefoyer/${idfoyer}`);
   }
   findFoyersByUniversiteIsNull():Observable<any[]>{
     return this.http.get<any[]>("http://localhost:8080/foyer/findFoyersByUniversiteIsNull");
   }
+
+  findFoyersByBlocsIsNull():Observable<any[]>{
+    return this.http.get<any[]>("http://localhost:8080/foyer/findFoyersByBlocsIsNull");
+  }
+  affecterFoyer(foyer: Foyer, idUniversite: number): Observable<Foyer> {
+    const url = `${this.apiUrl}/foyer/ajouterfoyeretaffecterauniversite/${idUniversite}`;
+    return this.http.post<Foyer>(url, foyer);
+  }
 }
+  
+

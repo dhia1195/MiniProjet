@@ -1,0 +1,21 @@
+<main class="position-relative">
+  <!-- Header -->
+  <div class="header pb-8 pt-5 pt-md-8 text-center">
+    <div class="container-fluid">
+      <div class="header-body">
+        <h1 class="display-4 font-weight-bold">Liste des blocs</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row flex-wrap">
+    <div class="col-lg-4 mb-4" *ngFor="let b of blocs">
+      <div class="card" style="border-color: #dc3545; cursor: pointer;" (click)="showBlocDetails(b)">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #dc3545;">{{ b.nomBloc }}</h5>
+          <p class="card-text">Capacité : {{ b.capaciteBloc }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

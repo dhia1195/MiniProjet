@@ -1,0 +1,67 @@
+<div class="position-relative">
+ 
+  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8 text-center text-white">
+    <div class="container-fluid">
+      <div class="header-body">
+        <h1 class="display-3 text-white"> foyer</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+<div class="col-md-12">
+  <div class="d-flex flex-wrap justify-content-between">
+    <div class="card mb-3 mx-2" *ngFor="let foyer of getVisibleFoyers()">
+      <div class="card-body">
+        <input type="file" (change)="onFileChange($event, foyer)" accept="image/*" style="display: none" #fileInput>
+        <img src='assets/img/C-foyer-universitaire-.png' class="img-fluid" alt="Foyer Image" style="max-width: 350px;">
+        <h5 class="card-title">{{ foyer.nomFoyer }}</h5>
+        <p class="card-text">Capacité: {{ foyer.capacite }}</p>
+        <button class="btn btn-primary" (click)="openDetailsModal(foyer)">Sélectionner</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Bootstrap Modal for Foyer Details -->
+<!-- Bootstrap Modal for Foyer Details -->
+<div class="modal" id="foyerDetailsModal" tabindex="-1" aria-labelledby="foyerDetailsModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="foyerDetailsModalLabel">Détails du foyer</h5>
+      <button type="button" class="btn-close" (click)="closeDetailsModal()" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-6">
+          <img src='assets/img/C-foyer-universitaire-.png' class="img-fluid" alt="Foyer Image">
+        </div>
+        <div class="col-md-6">
+          <h5>Nom du Foyer: {{ selectedFoyer?.nomFoyer }}</h5>
+          <p>Capacité: {{ selectedFoyer?.capacite }}</p>
+          <!-- Add other details as needed -->
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeDetailsModal()">Fermer</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<!-- Pagination controls -->
+<div class="row">
+<div class="col-md-12">
+  <button class="btn btn-primary-dark" (click)="prevPage()" [disabled]="currentPage === 1">Précédent</button>
+  <span>{{ currentPage }} / {{ calculateMaxPage() }}</span>
+  <button class="btn btn-primary-dark" (click)="nextPage()" [disabled]="currentPage === calculateMaxPage()">Suivant</button>
+</div>
+</div>

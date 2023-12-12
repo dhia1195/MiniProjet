@@ -1,0 +1,106 @@
+<!-- Sidenav -->
+
+
+  <!-- Top navbar -->
+
+  <!-- Foyer Component Header -->
+  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8 text-center text-white">
+    <div class="container-fluid">
+      <div class="header-body">
+        <h1 class="display-3  text-white">Liste des Foyers</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search and Sort Section -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- Search Section -->
+        <div class="input-group mb-1">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search by name or capacity"
+            [(ngModel)]="searchTerm"
+            (input)="searchFoyers(searchTerm)"
+          />
+          <button (click)="clearSearch()" class="btn btn-primary-dark">Clear</button>
+         <button (click)="showStatistics()" class="btn btn-success">Statistiques</button>
+        </div>
+        <div *ngIf="showStatisticsPanel">
+          <app-foyer-statistics [foyerStatistics]="foyerStatistics"></app-foyer-statistics>
+          </div>
+
+        <!-- Sort Section -->
+        <div class="col-lg-6 mb-3">
+          <div class="input-group">
+            <label for="sortField" class="form-label sr-only">Champ de tri :</label>
+            <select class="form-select" id="sortField" [(ngModel)]="sortField">
+              <option value="nomFoyer">nomFoyer</option>
+              <option value="capacite">capacite</option>
+            </select>
+            <label for="sortDirection" class="form-label sr-only">Direction de tri :</label>
+            <button (click)="sortFoyers()" class="btn btn-success">
+              <i class="fas fa-sort"></i> Trier
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Foyer List Section -->
+    <div #pdfContent>
+      <table class="table">
+        <!-- Table Header -->
+        <thead>
+          <tr>
+            <th scope="col">Name of foyer</th>
+            <th scope="col">Capacity of foyer</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <!-- Table Body -->
+        <tbody>
+          <tr *ngFor="let foyer of foyers">
+            <td>{{ foyer.nomFoyer }}</td>
+            <td>{{ foyer.capacite }}</td>
+            <td>
+              <button (click)="removefoyer(foyer.idFoyer)" class="btn btn-danger">Supprimer</button>
+              <button (click)="navigateToUpdateForm(foyer.idFoyer)" class="btn btn-primary">Modifier</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <button (click)="downloadPDF()" class="btn btn-success">Télécharger en PDF</button>
+        <button (click)="navigateToFoyerForm()" class="btn btn-primary">Ajouter un foyer</button>
+        
+        
+
+<!-- <div class="row">
+  <div class="col-md-4" *ngFor="let foyer of foyers">
+    <app-foyer-card [foyer]="foyer" (selected)="onSelectFoyer($event)"></app-foyer-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Précédent</button>
+    <span>{{ currentPage }} / {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Suivant</button>
+    <div *ngIf="selectedFoyer">
+      <h2>Détails du foyer sélectionné</h2>
+      <p>Nom: {{ selectedFoyer.nomFoyer }}</p>
+      <p>Capacité: {{ selectedFoyer.capacite }}</p>
+    </div>
+  </div>
+</div> -->
+
+    
+        </div>
+      </div>
+    </div>
+
+

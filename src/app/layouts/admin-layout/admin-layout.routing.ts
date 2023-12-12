@@ -12,7 +12,15 @@ import { EtudiantComponent } from 'src/app/pages/etudiant/etudiant.component';
 import { EtudiantFormComponent } from 'src/app/pages/etudiant-form/etudiant-form.component';
 import { UpdateEtudiantFormComponent } from 'src/app/pages/update-etudiant-form/update-etudiant-form.component';
 import { StatistiqueComponent } from 'src/app/pages/statistique/statistique.component';
+import { BlocComponent } from 'src/app/pages/bloc/bloc.component';
+import { FormBlocComponent } from 'src/app/pages/form-bloc/form-bloc.component';
 
+
+import { UpdateFormBlocComponent } from 'src/app/pages/update-form-bloc/update-form-bloc.component';
+import { FoyerStatisticsComponent } from "src/app/pages/foyer-statistics/foyer-statistics.component";
+import { FoyerComponent } from "src/app/pages/foyer/foyer.component";
+import { FoyerFormComponent } from "src/app/pages/foyer-form/foyer-form.component";
+import { UpdateFoyerFormComponent } from "src/app/pages/update-foyer-form/update-foyer-form.component";
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "user-profile", component: UserProfileComponent },
@@ -37,4 +45,23 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'update-etudiant-form',      component: UpdateEtudiantFormComponent },
   { path: 'etudiantUpdate/:id', component: UpdateEtudiantFormComponent }, 
   { path: 'statistique', component: StatistiqueComponent },
+
+
+  
+  { path: 'bloc',           component: BlocComponent },
+  { path: 'bloc-form', component: FormBlocComponent },
+  { path: 'update-form-bloc',component: UpdateFormBlocComponent },
+  { path: 'updateBloc/:idBloc', component: UpdateFormBlocComponent },
+
+
+  { path: 'foyer',           component: FoyerComponent },
+  { path: 'foyer-form', component: FoyerFormComponent },
+  { path: 'foyer-statistics', component: FoyerStatisticsComponent },
+  { path: 'foyerUpdate/:id', component: UpdateFoyerFormComponent }
+
+
+
+
+
+
 ];

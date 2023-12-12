@@ -20,6 +20,16 @@ import { UpdateUniversiteComponent } from "src/app/pages/update-universite/updat
 import { EtudiantComponent } from 'src/app/pages/etudiant/etudiant.component';
 import { EtudiantFormComponent } from 'src/app/pages/etudiant-form/etudiant-form.component';
 import { UpdateEtudiantFormComponent } from 'src/app/pages/update-etudiant-form/update-etudiant-form.component';
+
+
+import { BlocComponent } from 'src/app/pages/bloc/bloc.component';
+import { FormBlocComponent } from 'src/app/pages/form-bloc/form-bloc.component';
+import { UpdateFormBlocComponent } from 'src/app/pages/update-form-bloc/update-form-bloc.component';
+
+import { FoyerComponent } from 'src/app/pages/foyer/foyer.component';
+import { FoyerFormComponent } from 'src/app/pages/foyer-form/foyer-form.component';
+import { UpdateFoyerFormComponent } from 'src/app/pages/update-foyer-form/update-foyer-form.component';
+import { FoyerStatisticsComponent } from 'src/app/pages/foyer-statistics/foyer-statistics.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -40,10 +50,19 @@ import { UpdateEtudiantFormComponent } from 'src/app/pages/update-etudiant-form/
     MapsComponent,
     AddUniversiteComponent,
     ListUniversiteComponent,
+    BlocComponent,
+    FormBlocComponent,
+    UpdateFormBlocComponent,
     UpdateUniversiteComponent,
     EtudiantComponent,
     EtudiantFormComponent,
-    UpdateEtudiantFormComponent
+    UpdateEtudiantFormComponent,
+
+   UpdateFoyerFormComponent,
+   FoyerFormComponent,
+   FoyerComponent,
+   FoyerStatisticsComponent,
+
     
   ]
 })

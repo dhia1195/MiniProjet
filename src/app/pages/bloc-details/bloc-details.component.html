@@ -1,0 +1,31 @@
+
+
+<div *ngIf="selectedBloc" class="bloc-details">
+  <h2 class="text-center mb-4">Détails du bloc</h2>
+
+  <div class="card d-flex align-items-center">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <!-- Display default image if no image is available -->
+        <img
+          src="{{ selectedBloc.image || '/assets/bloc.png' }}"
+          alt="Profile Image"
+          class="card-img img-fluid rounded etudiant-image"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Nom:</strong> {{ selectedBloc.nomBloc }}</li>
+            <li class="list-group-item"><strong>Capacité :</strong> {{ selectedBloc.capaciteBloc }}</li>
+
+          </ul>
+        </div>
+      </div>
+
+
+      <button routerLink="/user/blocf" class="btn btn-primary">Retour</button>
+
+    </div>
+  </div>
+</div>
